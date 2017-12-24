@@ -1,0 +1,2200 @@
+﻿<!DOCTYPE html>
+<!--[if IE]>
+<html lang="zh-CN" class="lt-ie10">
+<![endif]-->
+<!--[if !IE]><!-->
+<html lang="zh-CN">
+<!--<![endif]--><head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="format-detection" content="email=no">
+<meta name="format-detection" content="telephone=no">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="x-dns-prefetch-control" content="on">
+<link rel="shortcut icon" href="https://passport.migu.cn/favicon.ico" mce_href="https://passport.migu.cn/favicon.ico" type="image/x-icon"/>
+<link rel="icon" href="https://passport.migu.cn/favicon32.ico" mce_href="https://passport.migu.cn/favicon32.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{$root}static/css/all_1_first.css">
+<link href="{$root}static/css/global.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="{$root}static/css/login.css">
+<link rel="dns-prefetch" href="http://music.migu.cn"/>
+<link rel="dns-prefetch" href=""/>
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+<meta name="renderer" content="webkit">
+<title>{$title}</title>
+<meta name="keywords" content="咪咕音乐,彩铃,移动彩铃,手机彩铃,中国移动,12530,mp3,高品质音乐,无损音乐,在线听歌,歌曲下载,振铃,歌曲,铃音,特级会员,电台,mv,演唱会直播,音乐网站,音乐播放器">
+<meta name="description" content="咪咕音乐网是中国移动官方音乐门户，旨在提供音乐首发、高品质音乐试听、彩铃订购、歌曲下载、铃音管理、音乐电台、音乐视频等一站式音乐互动体验，好音乐尽在music.migu.cn！">
+
+<link href="{$root}static/css/recommend.css" rel="stylesheet">
+
+<script src="{$root}static/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="http://open.51094.com/user/myscript/15a3e55e8cf633.html"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="{$root}static/js/respond.min.js"></script>
+<script src="{$root}static/js/html5.js"></script>
+<![endif]-->
+<script>
+var MUSIC_CONFIG = {
+APP_HOST: 'http://music.migu.cn',
+APP_BASE_PATH:'/v2',
+APP_MUSIC_PATH:'/v2/music',
+APP_VIDEO_PATH:'/v2/video',
+APP_MY_PATH:'/v2/my',
+APP_COMMON_PATH:'/v2/common',
+APP_ASYNC_PATH:'/v2/async',
+APP_SEARCH_PATH:'/v2/search',
+APP_LIVE_PATH:'/v2/live',
+APP_USER_PATH:'/v2/user',
+APP_LOGIN_PATH:'/v2/login',
+APP_AUDIO_PATH:'/v2/player/audio',
+APP_DOWNLOAD_PATH:'/v2/app',
+SOURCE_ID: '220001',
+CHANNEL_ID: '001002A',
+MIGU_LOGIN_URL: 'https://passport.migu.cn/login?sourceid=',
+MIGU_USER_INFO_URL: 'https://passport.migu.cn/user/nav?sourceid=',
+MIGU_SDK_AUTHID: 'c3adb034f8a8446a822828b795a29349',
+MIGU_SDK_NETID: 'b486900f41fc411187240dcb45fdbc8d',
+MUSICIAN_BASE_URL:'http://218.200.160.117:8888'
+};
+// 用于挂载全局变量
+var MUSIC_GLOBAL = window.MUSIC_GLOBAL ? window.MUSIC_GLOBAL : {};
+</script>
+
+<style type="text/css">
+	.sss li:hover{
+		color:#e30077;
+	}
+	.sss .active{
+		
+		color:#e30077;
+	}
+	.show{
+		display: block;
+	}
+</style>
+
+</head>
+<body>
+<!--header start-->
+<div id="header">
+<div class="header-top">
+<div class="container">
+<h1 class="logo">
+<a href="http://music.migu.cn" title="咪咕音乐 music.migu.cn">
+<img src="{$root}static/picture/logo.png" alt="咪咕音乐 放厮听·趣玩乐">
+</a>
+</h1>
+<div class="nav" style="background:black">
+<ul class="nav-container">
+<li class="nav-item on">
+<a href="http://music.migu.cn">音乐</a>
+</li>
+<li class="nav-item">
+<a href="/v2/video">视频</a>
+</li>
+<li class="nav-item" id="my-migu">
+<a href="/v2/my">我的</a>
+</li>
+</ul>
+</div>
+<div class="login" id="login-user-info">
+
+<a href="javascript:;" class="avator" id="login1" style="display:block;">
+<img src="{$root}static/picture/default-head.png" class="img-block img-full img-tou">
+</a>
+<div id="userblock" class="userblock">
+<div class="picture"><img class="photo" src="{$pic}" /></div>
+<div class="userinfo" >
+<div class="nickname" ><span class="nickname1">{$nickname}</span></div>
+<div class="level"><span class="level1">{$level}</span></div>
+</div>
+</div>
+</div>
+<div class="search ">
+<span class="handle-icon">
+<i class="iconfont cf-search"></i>
+</span>
+<div class="ipt-box">
+<input type="text" id="search_input" placeholder="搜索歌曲、歌手、MV">
+</div>
+<a href="javascript:;" class="close-search">
+<i class="iconfont cf-close"></i>
+</a>
+</div>
+<div class="search-list">
+<div class="hot-search">
+<dl>
+<dt>热门搜索</dt>
+<dd class="hot-search-result">
+</dd>
+</dl>
+</div>
+<div class="search-result hide">
+<div class="search-result-item">
+<div class="search-result-title">
+<i class="iconfont cf-gequ"></i>
+歌曲
+</div>
+<ul id="search_song">
+</ul>
+</div>
+<div class="search-result-item">
+<div class="search-result-title">
+<i class="iconfont cf-geshou"></i>
+歌手
+</div>
+<ul id="search_singer">
+</ul>
+</div>
+<div class="search-result-item">
+<div class="search-result-title">
+<i class="iconfont cf-zhuanji"></i>
+专辑
+</div>
+<ul id="search_album">
+</ul>
+</div>
+<div class="search-result-item last-search">
+<div class="search-result-title">
+<i class="iconfont cf-mv"></i>
+MV
+</div>
+<ul id="search_mv">
+</ul>
+</div>
+</div>
+</div>
+<div class="opera">
+<a href="javascript:;" class="handle-search"></a>
+
+<a class="header-link hide" target="_blank" href="/v2/music/crbt">彩铃</a>
+
+
+</div>
+</div>
+</div>
+<div class="header-hover">
+<div class="container">
+<div class="child-nav">
+<ul class="child-find">
+
+<li>
+<a href="/v2/music/billboard">推荐</a>
+</li>
+<li>
+<a href="/v2/music/billboard">榜单</a>
+</li>
+<li>
+<a href="/v2/music/songlist">歌单</a>
+</li>
+<li>
+<a href="/v2/music/artist">歌手</a>
+</li>
+
+</ul>
+<ul class="child-video">
+<li>
+<a href="/v2/video">推荐</a>
+</li>
+<li>
+<a href="/v2/video/scene">演唱会现场</a>
+</li>
+<li>
+<a href="/v2/video/mv">MV</a>
+</li>
+
+</ul>
+<ul class="child-mime"></ul>
+</div>
+<!-- <div class="s-wel">咪咕音乐网改版啦，<a href="/v2/video">自制视频</a>等你来验！</div> -->
+<div class="s-wel">咪咕音乐网改版，<a href="https://www.wjx.cn/jq/19259626.aspx" target="_blank">我有看法！</a></div>
+</div>
+</div>
+</div>
+<!--header end--><div id="bg-main-img" style="background-image: url('images/bg.jpg');"></div>
+<!-- 资料框 -->
+ <div class="about">
+    <img src="{$picture}a00f12e0-2248-4c87-8c52-5841347cd771.jpg">
+   
+    <div>
+       <br /><h4 class="nickname2">昵称: {$nickname} <br /><b id="level2">{$level}</b></h4>
+		<b class="telphone">手机号码 : {$tel}</b>
+    </div>
+    <a href="{$root}index/data/ziliao" class="xiangxi">详细资料</a><br />
+    <a href="javascript:;" class="xiangxi2">退出登录</a><br />
+
+
+    <a href="javascript:;" class="guanbi"><p id="guanbi">关闭</p></a>
+  </div>
+<!--banner start-->
+<div id="banner">
+
+
+<script type="text/javascript">
+	$(function(){
+		//alert($('.hd a').length);
+		var timer=null;
+    	var oNow=0;
+    	timer=setInterval(next,4000);
+
+    	$('.bd li').mouseover(function(){
+      
+      	clearInterval(timer);
+    	});
+	    $('.bd li').mouseout(function(){
+	      timer=setInterval(next,4000);
+	    });
+
+    $('.hd a').mouseover(function(){
+      clearInterval(timer);
+      $('.hd a').removeClass('on');
+      $('.bd li').fadeOut('slow');
+      $(this).addClass('on');
+      $('.bd li').eq($(this).index()).fadeIn('slow');
+      oNow = $(this).index();
+      // timer = setInterval(next,1000);
+    });
+
+    $('.next1').click(function(){
+    	next();
+    });
+    $('.prev').click(function(){
+    	prev();
+    });
+
+
+    $('.hd a').mouseout(function(){
+      timer=setInterval(next,4000);
+    });
+    function next()
+    {
+      oNow++;
+      if(oNow>$('.bd li').length-1)
+      {
+        oNow=0;
+      }
+      $('.hd a').removeClass('on');
+      $('.bd li').fadeOut('slow');
+      $('.hd a').eq(oNow).addClass('on');
+      $('.bd li').eq(oNow).fadeIn('slow');
+    }
+
+    function prev()
+    {
+      oNow--;
+      if(oNow<0)
+      {
+        oNow=$('.bd li').length-1;
+      }
+      $('.hd a').removeClass('on');
+      $('.bd li').fadeOut('slow');
+      $('.hd a').eq(oNow).addClass('on');
+      $('.bd li').eq(oNow).fadeIn('slow');
+    }
+	});
+</script>
+
+<div id="slideBox" class="slideBox">
+<div class="hd"></div>
+<div class="bd">
+<ul >
+<li>
+<a href="http://music.migu.cn/v2/zt/2017/miguhui/index.html" title="乐动心声，瞳创未来" target="_blank" vms-ad-id="乐动心声，瞳创未来">
+<img src="{$root}static/picture/20171211104132411551.jpg" alt="乐动心声，瞳创未来" class="img-block img-full lunbo">
+</a>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/music/songlist/125481588/cd113fed-8f5e-449a-a0f4-b86044e04911" title="咪咕音乐周榜播报2017年第50周" target="_blank" vms-ad-id="咪咕音乐周榜播报2017年第50周">
+<img src="{$root}static/picture/20171215170206022055.jpg" alt="咪咕音乐周榜播报2017年第50周" class="img-block img-full lunbo">
+</a>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/music/album/1108395248" title="【首发】TFBOYS元气满满 全新专辑唱响《我们的时光》" target="_blank" vms-ad-id="【首发】TFBOYS元气满满 全新专辑唱响《我们的时光》">
+<img src="{$root}static/picture/20171215001842181654.jpg" alt="【首发】TFBOYS元气满满 全新专辑唱响《我们的时光》" class="img-block img-full lunbo">
+</a>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/music/topic/600CFC7B49DD4076E0530988190A239C" title="最in乐85期：《头戴金曲桂冠的创作女声》" target="_blank" vms-ad-id="最in乐85期：《头戴金曲桂冠的创作女声》">
+<img src="{$root}static/picture/20171211162533251822.jpg" alt="最in乐85期：《头戴金曲桂冠的创作女声》" class="img-block img-full lunbo">
+</a>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/music/topic/5FD472CD3534E9AEE0530988190A1807" title="除了花木兰，这些迪士尼小公举也有高颜值" target="_blank" vms-ad-id="除了花木兰，这些迪士尼小公举也有高颜值">
+<img src="{$root}static/picture/20171211104132411551.jpg" alt="除了花木兰，这些迪士尼小公举也有高颜值" class="img-block img-full lunbo">
+</a>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/music/topic/5FD1E996B5A908ACE0530988190A686B" title="毕书尽：不做“自Bii儿童” Just Bii Your Light" target="_blank" vms-ad-id="毕书尽：不做“自Bii儿童” Just Bii Your Light">
+<img src="{$root}static/picture/20171211095531552315.jpg" alt="毕书尽：不做“自Bii儿童” Just Bii Your Light" class="img-block img-full lunbo">
+</a>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/zt/2017/setstarcard/index.html" title="集星卡活动" target="_blank" vms-ad-id="集星卡活动">
+<img src="{$root}static/picture/20171201181022101416.jpg" alt="集星卡活动" class="img-block img-full lunbo">
+</a>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/music/topic" title="首页广告位" target="_blank" vms-ad-id="A74B51BE1725D2FDAE5473EE27DAF2CF">
+<img src="{$root}static/picture/20171206103136318305.jpg" alt="A74B51BE1725D2FDAE5473EE27DAF2CF" class="img-block img-full lunbo">
+</a>
+</li>
+</ul>
+</div>
+<div class="prev switch-btn"></div>
+<div class="next switch-btn next1"></div>
+</div>
+
+
+
+
+
+</div>
+<!--banner end--><!--新歌首发 start-->
+<div id="song" class="song-songlist">
+<div class="title-box">
+<h2 class="title"></h2>
+<div class="operation">
+</div>
+</div>
+<div class="song">
+<div class="swiper-container song-swiper">
+<div class="swiper-wrapper">
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am3dc98ef41554436d97ba370e4a7219d8.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108403517"></a>
+</div>
+<span class="btn-play single-play" mid="1108403517" data-musicName="好运来" data-album="" data-singerName="SNH48,祖海"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108403517" title="好运来">好运来</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/1000133230" title="SNH48">SNH48</a>
+<a href="/v2/music/artist/1153" title="祖海">祖海</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108403517" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;好运来&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108403517&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1217/1007/AM3dc98ef41554436d97ba370e4a7219d8.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;SNH48,祖海&#34;,&#34;album&#34;:&#34;好运来&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108403517">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am7b5191b7c9c34359a0278c6ae91f4f79.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108403867"></a>
+</div>
+<span class="btn-play single-play" mid="1108403867" data-musicName="命运的X号" data-album="" data-singerName="SNH48"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108403867" title="命运的X号">命运的X号</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/1000133230" title="SNH48">SNH48</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108403867" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;命运的X号&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108403867&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1215/2307/AM7b5191b7c9c34359a0278c6ae91f4f79.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;SNH48&#34;,&#34;album&#34;:&#34;命运的X号&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108403867">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am555a9b23931a49289d008d85bbae9981.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108367992"></a>
+</div>
+<span class="btn-play single-play" mid="1108367992" data-musicName="Don&#39;t Let It Go" data-album="" data-singerName="薛凯琪"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108367992" title="Don&#39;t Let It Go">Don&#39;t Let It Go</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/569" title="薛凯琪">薛凯琪</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108367992" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;Don&#39;t Let It Go&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108367992&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1215/0956/AM555a9b23931a49289d008d85bbae9981.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;薛凯琪&#34;,&#34;album&#34;:&#34;你我之间&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108367992">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/amebfe0550c6834fe487d8c919dac3bb98.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108401325"></a>
+</div>
+<span class="btn-play single-play" mid="1108401325" data-musicName="赴一场生命的冒险(端游《蛮荒搜神记》主题曲)" data-album="" data-singerName="迪丽热巴"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108401325" title="赴一场生命的冒险(端游《蛮荒搜神记》主题曲)">赴一场生命的冒险(端游《蛮荒搜神记》主题曲)</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/1002127399" title="迪丽热巴">迪丽热巴</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108401325" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;赴一场生命的冒险(端游《蛮荒搜神记》主题曲)&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108401325&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1215/1007/AMebfe0550c6834fe487d8c919dac3bb98.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;迪丽热巴&#34;,&#34;album&#34;:&#34;赴一场生命的冒险&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108401325">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am22455fd7b4fa4b448f9bde7c69cdc2cc.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108394806"></a>
+</div>
+<span class="btn-play single-play" mid="1108394806" data-musicName="你想娶我吗" data-album="" data-singerName="袁咏琳"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108394806" title="你想娶我吗">你想娶我吗</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/688869" title="袁咏琳">袁咏琳</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108394806" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;你想娶我吗&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108394806&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1215/0928/AM22455fd7b4fa4b448f9bde7c69cdc2cc.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;袁咏琳&#34;,&#34;album&#34;:&#34;你想娶我吗&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108394806">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am5811e02e699d4544b3c32c61057107ab.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108401370"></a>
+</div>
+<span class="btn-play single-play" mid="1108401370" data-musicName="唯我独大(电影《奇门遁甲》片尾曲)" data-album="" data-singerName="伍佰&amp;China Blue"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108401370" title="唯我独大(电影《奇门遁甲》片尾曲)">唯我独大(电影《奇门遁甲》片尾曲)</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/1000006364" title="伍佰&amp;China Blue">伍佰&amp;China Blue</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108401370" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;唯我独大(电影《奇门遁甲》片尾曲)&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108401370&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1215/0007/AM5811e02e699d4544b3c32c61057107ab.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;伍佰&amp;China Blue&#34;,&#34;album&#34;:&#34;唯我独大&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108401370">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/amc85a5525421e4a36aaad8f73849f0950.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108390300"></a>
+</div>
+<span class="btn-play single-play" mid="1108390300" data-musicName="躲猫猫" data-album="" data-singerName="TFBOYS"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108390300" title="躲猫猫">躲猫猫</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/1000978344" title="TFBOYS">TFBOYS</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108390300" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;躲猫猫&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108390300&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1215/1114/AMc85a5525421e4a36aaad8f73849f0950.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;TFBOYS&#34;,&#34;album&#34;:&#34;我们的时光&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108390300">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/ambab91de4d84743f8865e780d6c2f7476.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108388507"></a>
+</div>
+<span class="btn-play single-play" mid="1108388507" data-musicName="万有引力(网剧《端脑》宣传曲)" data-album="" data-singerName="汪苏泷"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108388507" title="万有引力(网剧《端脑》宣传曲)">万有引力(网剧《端脑》宣传曲)</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/980012" title="汪苏泷">汪苏泷</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108388507" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;万有引力(网剧《端脑》宣传曲)&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108388507&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1214/1007/AMbab91de4d84743f8865e780d6c2f7476.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;汪苏泷&#34;,&#34;album&#34;:&#34;《端脑》网络剧原声&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108388507">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am1a1297698370496bb920fb9805f277f6.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108377224"></a>
+</div>
+<span class="btn-play single-play" mid="1108377224" data-musicName="说散就散(电影《前任3：再见前任》主题曲)" data-album="" data-singerName="袁娅维"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108377224" title="说散就散(电影《前任3：再见前任》主题曲)">说散就散(电影《前任3：再见前任》主题曲)</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/1000006399" title="袁娅维">袁娅维</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108377224" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;说散就散(电影《前任3：再见前任》主题曲)&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108377224&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1213/0114/AM1a1297698370496bb920fb9805f277f6.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;袁娅维&#34;,&#34;album&#34;:&#34;说散就散&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108377224">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am6a0d6bb0e39a4dc29e948c9c33b73234.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108384904"></a>
+</div>
+<span class="btn-play single-play" mid="1108384904" data-musicName="猫" data-album="" data-singerName="许魏洲"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108384904" title="猫">猫</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/1003483570" title="许魏洲">许魏洲</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108384904" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;猫&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108384904&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1212/1814/AM6a0d6bb0e39a4dc29e948c9c33b73234.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;许魏洲&#34;,&#34;album&#34;:&#34;15分钟的独白&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108384904">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/amfbcc35ef2ef440df800ab56aff4aefc9.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108383109"></a>
+</div>
+<span class="btn-play single-play" mid="1108383109" data-musicName="三生梦(网剧《拜见宫主大人》插曲)" data-album="" data-singerName="李诺"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108383109" title="三生梦(网剧《拜见宫主大人》插曲)">三生梦(网剧《拜见宫主大人》插曲)</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/1108383096" title="李诺">李诺</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108383109" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;三生梦(网剧《拜见宫主大人》插曲)&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108383109&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1212/1707/AMfbcc35ef2ef440df800ab56aff4aefc9.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;李诺&#34;,&#34;album&#34;:&#34;三生梦&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108383109">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am8a0ecdcdb6a442ddbb2e784418379aa0.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108379699"></a>
+</div>
+<span class="btn-play single-play" mid="1108379699" data-musicName="Boss" data-album="" data-singerName="孔令奇"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/song/1108379699" title="Boss">Boss</a>
+</p>
+<p class="singer">
+<a href="/v2/music/artist/5371" title="孔令奇">孔令奇</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="1108379699" data-share="{&#34;type&#34;:&#34;song&#34;,&#34;title&#34;:&#34;Boss&#34;,&#34;linkUrl&#34;:&#34;/v2/music/song/1108379699&#34;,&#34;imgUrl&#34;:&#34;http://cdn.music.migu.cn/{$root}static/picture/2017/1212/1442/AM8a0ecdcdb6a442ddbb2e784418379aa0.jpg&#34;,&#34;summary&#34;:&#34;&#34;,&#34;singer&#34;:&#34;孔令奇&#34;,&#34;album&#34;:&#34;BOSS&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="1" data-mid="1108379699">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="arrow-button arrow-left"></div>
+<div class="arrow-button arrow-right"></div>
+</div>
+</div>
+<!--新歌首发 end--><!--咪咕歌单 start-->
+<div id="songlist" class="song-songlist">
+<div class="title-box">
+<h2 class="title"></h2>
+<div class="operation">
+<a href="javascript:;" class="add-songList">我要创建</a>
+<a href="/v2/music/songlist" class="more">更多<i class="iconfont cf-right-arrow-bold"></i></a>
+</div>
+</div>
+<div class="songlist">
+<div class="swiper-container songlist-swiper">
+<div class="swiper-wrapper">
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/b4e32697-2fb9-4acf-a18a-dd9849541632.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/125350103/59b55b46-80b9-4e0f-a048-4fdef4a97a48"></a>
+</div>
+<span class="btn-play songlist-play" data-id="125350103" data-userid="59b55b46-80b9-4e0f-a048-4fdef4a97a48"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/125350103/59b55b46-80b9-4e0f-a048-4fdef4a97a48" title="霉霉生日快乐！">霉霉生日快乐！</a>
+</p>
+<p class="singer">
+<a href="/v2/user/59b55b46-80b9-4e0f-a048-4fdef4a97a48" time="已而">已而</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="霉霉生日快乐！" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;霉霉生日快乐！&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/125350103/59b55b46-80b9-4e0f-a048-4fdef4a97a48&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/b4e32697-2fb9-4acf-a18a-dd9849541632.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;已而&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="125350103" data-userid="59b55b46-80b9-4e0f-a048-4fdef4a97a48">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>0</span>
+</p>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/b96cac7f-d0f3-452c-91e7-be1e042b6850.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/125368263/1b044ba3-36aa-45b6-8200-3a627c5e031c"></a>
+</div>
+<span class="btn-play songlist-play" data-id="125368263" data-userid="1b044ba3-36aa-45b6-8200-3a627c5e031c"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/125368263/1b044ba3-36aa-45b6-8200-3a627c5e031c" title="Hot！2017年度金曲">Hot！2017年度金曲</a>
+</p>
+<p class="singer">
+<a href="/v2/user/1b044ba3-36aa-45b6-8200-3a627c5e031c" time="fendinho">fendinho</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="Hot！2017年度金曲" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;Hot！2017年度金曲&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/125368263/1b044ba3-36aa-45b6-8200-3a627c5e031c&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/b96cac7f-d0f3-452c-91e7-be1e042b6850.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;fendinho&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="125368263" data-userid="1b044ba3-36aa-45b6-8200-3a627c5e031c">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>0</span>
+</p>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/5c92bf0e-4ce1-4c70-a783-c2aeaea0d56c.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/125260662/6b2ba0c9-ead9-40d0-a801-db397b998940"></a>
+</div>
+<span class="btn-play songlist-play" data-id="125260662" data-userid="6b2ba0c9-ead9-40d0-a801-db397b998940"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/125260662/6b2ba0c9-ead9-40d0-a801-db397b998940" title="为我的思念高歌一曲">为我的思念高歌一曲</a>
+</p>
+<p class="singer">
+<a href="/v2/user/6b2ba0c9-ead9-40d0-a801-db397b998940" time="波拉莉斯">波拉莉斯</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="为我的思念高歌一曲" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;为我的思念高歌一曲&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/125260662/6b2ba0c9-ead9-40d0-a801-db397b998940&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/5c92bf0e-4ce1-4c70-a783-c2aeaea0d56c.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;波拉莉斯&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="125260662" data-userid="6b2ba0c9-ead9-40d0-a801-db397b998940">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>0</span>
+</p>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/2c3bef82-606e-46f4-8e29-c819897372fa.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/124949138/cd113fed-8f5e-449a-a0f4-b86044e04911"></a>
+</div>
+<span class="btn-play songlist-play" data-id="124949138" data-userid="cd113fed-8f5e-449a-a0f4-b86044e04911"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/124949138/cd113fed-8f5e-449a-a0f4-b86044e04911" title="唱将齐聚│群星璀璨，巨星&#34;和你在一起&#34;">唱将齐聚│群星璀璨，巨星&#34;和你在一起&#34;</a>
+</p>
+<p class="singer">
+<a href="/v2/user/cd113fed-8f5e-449a-a0f4-b86044e04911" time="咪咕">咪咕</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="唱将齐聚│群星璀璨，巨星&#34;和你在一起&#34;" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;唱将齐聚│群星璀璨，巨星\&#34;和你在一起\&#34;&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/124949138/cd113fed-8f5e-449a-a0f4-b86044e04911&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/2c3bef82-606e-46f4-8e29-c819897372fa.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;咪咕&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="124949138" data-userid="cd113fed-8f5e-449a-a0f4-b86044e04911">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>7108</span>
+</p>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/4719162b-a2aa-4768-9b4c-29d39e577322.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/124948626/3c3915ce-3427-465b-8386-974b211513a7"></a>
+</div>
+<span class="btn-play songlist-play" data-id="124948626" data-userid="3c3915ce-3427-465b-8386-974b211513a7"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/124948626/3c3915ce-3427-465b-8386-974b211513a7" title="萧煌奇献声心理罪">萧煌奇献声心理罪</a>
+</p>
+<p class="singer">
+<a href="/v2/user/3c3915ce-3427-465b-8386-974b211513a7" time="贰拾肆">贰拾肆</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="萧煌奇献声心理罪" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;萧煌奇献声心理罪&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/124948626/3c3915ce-3427-465b-8386-974b211513a7&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/4719162b-a2aa-4768-9b4c-29d39e577322.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;贰拾肆&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="124948626" data-userid="3c3915ce-3427-465b-8386-974b211513a7">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>2.9W</span>
+</p>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/d619dbf9-fdb3-4914-8ce2-c0f8cb7da6bf.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/124824996/67a69b68-41be-4bd4-b883-b764112598b1"></a>
+</div>
+<span class="btn-play songlist-play" data-id="124824996" data-userid="67a69b68-41be-4bd4-b883-b764112598b1"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/124824996/67a69b68-41be-4bd4-b883-b764112598b1" title="神级Remix|音乐的二次升华">神级Remix|音乐的二次升华</a>
+</p>
+<p class="singer">
+<a href="/v2/user/67a69b68-41be-4bd4-b883-b764112598b1" time="゛because☺">゛because☺</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="神级Remix|音乐的二次升华" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;神级Remix|音乐的二次升华&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/124824996/67a69b68-41be-4bd4-b883-b764112598b1&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/d619dbf9-fdb3-4914-8ce2-c0f8cb7da6bf.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;゛because☺&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="124824996" data-userid="67a69b68-41be-4bd4-b883-b764112598b1">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>3.2W</span>
+</p>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/7ab6036f-647b-4824-9f66-4b4018d251f8.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/124372968/2344a133-8367-4f0d-9247-5bd9b9a72646"></a>
+</div>
+<span class="btn-play songlist-play" data-id="124372968" data-userid="2344a133-8367-4f0d-9247-5bd9b9a72646"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/124372968/2344a133-8367-4f0d-9247-5bd9b9a72646" title="留名好莱坞星光大道的歌手">留名好莱坞星光大道的歌手</a>
+</p>
+<p class="singer">
+<a href="/v2/user/2344a133-8367-4f0d-9247-5bd9b9a72646" time="C,X,K,S">C,X,K,S</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="留名好莱坞星光大道的歌手" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;留名好莱坞星光大道的歌手&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/124372968/2344a133-8367-4f0d-9247-5bd9b9a72646&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/7ab6036f-647b-4824-9f66-4b4018d251f8.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;C,X,K,S&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="124372968" data-userid="2344a133-8367-4f0d-9247-5bd9b9a72646">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>1.0W</span>
+</p>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/437bcaf6-1d5c-4de4-8d1c-f0b4353a11cb.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/124825601/6347112d-e955-42bb-809e-5fd86788fb1c"></a>
+</div>
+<span class="btn-play songlist-play" data-id="124825601" data-userid="6347112d-e955-42bb-809e-5fd86788fb1c"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/124825601/6347112d-e955-42bb-809e-5fd86788fb1c" title="念念不忘，必有回响">念念不忘，必有回响</a>
+</p>
+<p class="singer">
+<a href="/v2/user/6347112d-e955-42bb-809e-5fd86788fb1c" time="赶着牛车迎接春天">赶着牛车迎接春天</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="念念不忘，必有回响" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;念念不忘，必有回响&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/124825601/6347112d-e955-42bb-809e-5fd86788fb1c&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/437bcaf6-1d5c-4de4-8d1c-f0b4353a11cb.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;赶着牛车迎接春天&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="124825601" data-userid="6347112d-e955-42bb-809e-5fd86788fb1c">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>4.8W</span>
+</p>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/431b0506-b7ee-4372-b9b8-9617a89d7745.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/124374684/cd113fed-8f5e-449a-a0f4-b86044e04911"></a>
+</div>
+<span class="btn-play songlist-play" data-id="124374684" data-userid="cd113fed-8f5e-449a-a0f4-b86044e04911"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/124374684/cd113fed-8f5e-449a-a0f4-b86044e04911" title="戴佩妮：给你“过耳不忘”的美好时光">戴佩妮：给你“过耳不忘”的美好时光</a>
+</p>
+<p class="singer">
+<a href="/v2/user/cd113fed-8f5e-449a-a0f4-b86044e04911" time="咪咕">咪咕</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="戴佩妮：给你“过耳不忘”的美好时光" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;戴佩妮：给你“过耳不忘”的美好时光&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/124374684/cd113fed-8f5e-449a-a0f4-b86044e04911&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/431b0506-b7ee-4372-b9b8-9617a89d7745.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;咪咕&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="124374684" data-userid="cd113fed-8f5e-449a-a0f4-b86044e04911">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>5228</span>
+</p>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/0c1dd063-f380-49b3-bc09-15d2ded226c6.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/124373439/7d428135-f0b9-4428-a956-da0bba8b1add"></a>
+</div>
+<span class="btn-play songlist-play" data-id="124373439" data-userid="7d428135-f0b9-4428-a956-da0bba8b1add"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/124373439/7d428135-f0b9-4428-a956-da0bba8b1add" title="跟着『OST女王严艺丹』听歌追剧！">跟着『OST女王严艺丹』听歌追剧！</a>
+</p>
+<p class="singer">
+<a href="/v2/user/7d428135-f0b9-4428-a956-da0bba8b1add" time="别让太阳晒我">别让太阳晒我</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="跟着『OST女王严艺丹』听歌追剧！" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;跟着『OST女王严艺丹』听歌追剧！&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/124373439/7d428135-f0b9-4428-a956-da0bba8b1add&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/0c1dd063-f380-49b3-bc09-15d2ded226c6.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;别让太阳晒我&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="124373439" data-userid="7d428135-f0b9-4428-a956-da0bba8b1add">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>2.3W</span>
+</p>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/e28e2f76-12b1-4632-9bfa-5895c9b9e304.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/124229201/2e608eef-52da-4879-99cb-cb88661331eb"></a>
+</div>
+<span class="btn-play songlist-play" data-id="124229201" data-userid="2e608eef-52da-4879-99cb-cb88661331eb"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/124229201/2e608eef-52da-4879-99cb-cb88661331eb" title="［中文说唱］说的比唱的Real！">［中文说唱］说的比唱的Real！</a>
+</p>
+<p class="singer">
+<a href="/v2/user/2e608eef-52da-4879-99cb-cb88661331eb" time="自娱自乐">自娱自乐</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="［中文说唱］说的比唱的Real！" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;［中文说唱］说的比唱的Real！&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/124229201/2e608eef-52da-4879-99cb-cb88661331eb&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/e28e2f76-12b1-4632-9bfa-5895c9b9e304.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;自娱自乐&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="124229201" data-userid="2e608eef-52da-4879-99cb-cb88661331eb">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>8781</span>
+</p>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/a00f12e0-2248-4c87-8c52-5841347cd771.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/songlist/124099764/ca88a774-dbaa-4c34-bd96-dbabed1bca78"></a>
+</div>
+<span class="btn-play songlist-play" data-id="124099764" data-userid="ca88a774-dbaa-4c34-bd96-dbabed1bca78"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name">
+<a href="/v2/music/songlist/124099764/ca88a774-dbaa-4c34-bd96-dbabed1bca78" title="爱如烟花，只开一瞬">爱如烟花，只开一瞬</a>
+</p>
+<p class="singer">
+<a href="/v2/user/ca88a774-dbaa-4c34-bd96-dbabed1bca78" time="地瓜">地瓜</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<span class="i-btn btn-share" data-id="爱如烟花，只开一瞬" data-share="{&#34;type&#34;:&#34;songlist&#34;,&#34;title&#34;:&#34;爱如烟花，只开一瞬&#34;,&#34;linkUrl&#34;:&#34;/v2/music/songlist/124099764/ca88a774-dbaa-4c34-bd96-dbabed1bca78&#34;,&#34;imgUrl&#34;:&#34;http://d.musicapp.migu.cn/ugcdata/playListimg/a00f12e0-2248-4c87-8c52-5841347cd771.jpg&#34;,&#34;summary&#34;:&#34;list.playListDesc&#34;,&#34;singer&#34;:&#34;地瓜&#34;,&#34;album&#34;:&#34;&#34;}">
+<i type="slide-action"></i>
+</span>
+<span class="i-btn btn-add" data-type="6" data-id="124099764" data-userid="ca88a774-dbaa-4c34-bd96-dbabed1bca78">
+<i type="slide-action"></i>
+</span>
+</div>
+</div>
+<p class="like-listen clearfix">
+<span class="like-num"><i class="iconfont cf-audition"></i>18.7W</span>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div class="arrow-button arrow-left"></div>
+<div class="arrow-button arrow-right"></div>
+</div>
+</div>
+<!--咪咕歌单 end--><!--咪咕榜单 start-->
+<div id="billboard">
+<div class="title-box">
+<h2 class="title"></h2>
+<div class="operation">
+<a href="/v2/music/billboard" class="more">更多<i class="iconfont cf-right-arrow-bold"></i></a>
+</div>
+</div>
+<div class="billboard">
+<div class="billbox-box">
+<div class="swiper-container billboard-swiper">
+<div class="swiper-wrapper outer-list-item">
+<div class="swiper-slide" nodeid="17600" listid="">
+<div class="billboard-item">
+<div class="item-title">咪咕音乐榜</div>
+<ul>
+<li>
+<div class="song-code">1</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as82cc8ee0459a465ea73f4d5a83e9e8a5.jpg" alt="像风一样" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108007019"></a>
+</div>
+<span class="btn-play single-play" mid="1108007019"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1108007019">像风一样</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/1212">薛之谦</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>27.3W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1108007019" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1108007019?copyrightId=60084651285" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1108007019?copyrightId=60084651285" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">2</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as82cc8ee0459a465ea73f4d5a83e9e8a5.jpg" alt="暧昧" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1105003409"></a>
+</div>
+<span class="btn-play single-play" mid="1105003409"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1105003409">暧昧</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/1212">薛之谦</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>11.8W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1105003409" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1105003409?copyrightId=60084651138" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1105003409?copyrightId=60084651138" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">3</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as1a1297698370496bb920fb9805f277f6.jpg" alt="说散就散(电影《前任3：再见前任》主题曲)" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108377224"></a>
+</div>
+<span class="btn-play single-play" mid="1108377224"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1108377224">说散就散(电影《前任3：再见前任》主题曲)</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/1000006399">袁娅维</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>8.6W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1108377224" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1108377224?copyrightId=6005751BZHF" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1108377224?copyrightId=6005751BZHF" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">4</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/asf9227ad01caa470c9807db3f8c119d6c.jpg" alt="像我这样的人(天天向上2017)" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108358520"></a>
+</div>
+<span class="btn-play single-play" mid="1108358520"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1108358520">像我这样的人(天天向上2017)</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/1106695242">毛不易</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>9.8W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1108358520" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1108358520?copyrightId=69543203170" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1108358520?copyrightId=69543203170" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">5</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as98eb16fb27b34241be423894a84e8e54.jpg" alt="差一步" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108108128"></a>
+</div>
+<span class="btn-play single-play" mid="1108108128"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1108108128">差一步</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/356078">大壮</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>5.4W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1108108128" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1108108128?copyrightId=63350300442" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1108108128?copyrightId=63350300442" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+</ul>
+<div class="billboard-action">
+<span class="billboard-play" mids = "1108007019&amp;1105003409&amp;1108377224&amp;1108358520&amp;1108108128&amp;1106942439&amp;1106728218&amp;1107869011&amp;1107730429&amp;1108313066&amp;1108079581&amp;1108295552&amp;1108088353&amp;1108294810&amp;1108045895&amp;1106916528&amp;1108023558&amp;1108384282&amp;1106932857&amp;1108296837&amp;1106930173&amp;1108344774&amp;1108297078&amp;1106939879&amp;1106880565&amp;1107988267&amp;1107489956&amp;1108348975&amp;1108192747&amp;1107110550">
+<i class="iconfont cf-play1"></i>
+</span>
+<span class="btn-add" data-type="2" data-id="1108007019&amp;1105003409&amp;1108377224&amp;1108358520&amp;1108108128&amp;1106942439&amp;1106728218&amp;1107869011&amp;1107730429&amp;1108313066&amp;1108079581&amp;1108295552&amp;1108088353&amp;1108294810&amp;1108045895&amp;1106916528&amp;1108023558&amp;1108384282&amp;1106932857&amp;1108296837&amp;1106930173&amp;1108344774&amp;1108297078&amp;1106939879&amp;1106880565&amp;1107988267&amp;1107489956&amp;1108348975&amp;1108192747&amp;1107110550">
+<i class="iconfont cf-tianjia" type="slide-action"></i>
+</span>
+</div>
+</div>
+<div class="billboard-cover"></div>
+</div>
+<div class="swiper-slide" nodeid="20187" listid="">
+<div class="billboard-item">
+<div class="item-title">咪咕欧美榜</div>
+<ul>
+<li>
+<div class="song-code">1</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as763c94fa16674b7f9b53d627b122a582.jpg" alt="Panama" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1106728218"></a>
+</div>
+<span class="btn-play single-play" mid="1106728218"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1106728218">Panama</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/1105644240">Matteo</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>20.2W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1106728218" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1106728218?copyrightId=63879702246" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1106728218?copyrightId=63879702246" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">2</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as5bd6dcb9b0f043c79333e88afcb518c8.jpg" alt="How Long" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1107110550"></a>
+</div>
+<span class="btn-play single-play" mid="1107110550"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1107110550">How Long</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/1002175256">Charlie Puth</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>10.8W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1107110550" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1107110550?copyrightId=6005751B6AT" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1107110550?copyrightId=6005751B6AT" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">3</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as763c94fa16674b7f9b53d627b122a582.jpg" alt="Panama(Extended)" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108052314"></a>
+</div>
+<span class="btn-play single-play" mid="1108052314"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1108052314">Panama(Extended)</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/1105644240">Matteo</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>3.5W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1108052314" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1108052314?copyrightId=63879702247" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1108052314?copyrightId=63879702247" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">4</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/asbcd6850918034b4fb62861361f1c328f.jpg" alt="The Spectre" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1106916528"></a>
+</div>
+<span class="btn-play single-play" mid="1106916528"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1106916528">The Spectre</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/1002638961">Alan Walker</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>10.1W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1106916528" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1106916528?copyrightId=6005970S6G0" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1106916528?copyrightId=6005970S6G0" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">5</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/ase45741edc3954abc884f34bcd1b5fcc9.jpg" alt="I See You" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1107937424"></a>
+</div>
+<span class="btn-play single-play" mid="1107937424"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1107937424">I See You</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/1002197713">Kygo</a>
+<a href="/v2/music/artist/1105681079">Billy Raffoul</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>1.3W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1107937424" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1107937424?copyrightId=6005970SCPU" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1107937424?copyrightId=6005970SCPU" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+</ul>
+<div class="billboard-action">
+<span class="billboard-play" mids = "1106728218&amp;1107110550&amp;1108052314&amp;1106916528&amp;1107937424&amp;1107368574&amp;1107529536&amp;1106923359&amp;1107553230&amp;1106926998&amp;1108298220&amp;1106912750&amp;1108349328&amp;1108148956&amp;1105455295&amp;1107602100&amp;1108087889&amp;1107231898&amp;1106938001&amp;1107110585">
+<i class="iconfont cf-play1"></i>
+</span>
+<span class="btn-add" data-type="2" data-id="1106728218&amp;1107110550&amp;1108052314&amp;1106916528&amp;1107937424&amp;1107368574&amp;1107529536&amp;1106923359&amp;1107553230&amp;1106926998&amp;1108298220&amp;1106912750&amp;1108349328&amp;1108148956&amp;1105455295&amp;1107602100&amp;1108087889&amp;1107231898&amp;1106938001&amp;1107110585">
+<i class="iconfont cf-tianjia" type="slide-action"></i>
+</span>
+</div>
+</div>
+<div class="billboard-cover"></div>
+</div>
+<div class="swiper-slide" nodeid="20186" listid="">
+<div class="billboard-item">
+<div class="item-title">咪咕影视榜</div>
+<ul>
+<li>
+<div class="song-code">1</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as4dccccfbb7ad429da0c8c7d2d09334cf.jpg" alt="女儿国(电影《西游记女儿国》主题曲)" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108354603"></a>
+</div>
+<span class="btn-play single-play" mid="1108354603"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1108354603">女儿国(电影《西游记女儿国》主题曲)</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/627">张靓颖</a>
+<a href="/v2/music/artist/1000001086">李荣浩</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>5.1W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1108354603" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1108354603?copyrightId=63681000651" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1108354603?copyrightId=63681000651" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">2</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as703e89859cd04a19b55992fd32176b99.jpg" alt="蝴蝶的时间(网剧《梁山伯与祝英台》主题曲)" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108344774"></a>
+</div>
+<span class="btn-play single-play" mid="1108344774"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1108344774">蝴蝶的时间(网剧《梁山伯与祝英台》主题曲)</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/18196">许嵩</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>4.3W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1108344774" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1108344774?copyrightId=60084651414" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1108344774?copyrightId=60084651414" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">3</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as38c8fdd37de446d48499ced72617b816.jpg" alt="遥远的歌(网络剧《你好，旧时光》片尾曲)" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1107988267"></a>
+</div>
+<span class="btn-play single-play" mid="1107988267"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1107988267">遥远的歌(网络剧《你好，旧时光》片尾曲)</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/127751">刘惜君</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>3.7W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1107988267" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1107988267?copyrightId=60078702101" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1107988267?copyrightId=60078702101" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">4</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as55a268d9a2d94ba0be9c2206291656ed.jpg" alt="想把你留在这里" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108341269"></a>
+</div>
+<span class="btn-play single-play" mid="1108341269"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1108341269">想把你留在这里</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/1106613398">Tizzy T</a>
+<a href="/v2/music/artist/1106618897">Jony J</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>2.3W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1108341269" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1108341269?copyrightId=60076260690" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1108341269?copyrightId=60076260690" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+<li>
+<div class="song-code">5</div>
+<div class="song-content clearfix">
+<div class="song-desc">
+<div class="img-box">
+<img src="{$root}static/picture/as38a07b82fd3547208094c765c986f7ba.jpg" alt="请记住我(电影《寻梦环游记》主题曲)" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108294810"></a>
+</div>
+<span class="btn-play single-play" mid="1108294810"></span>
+</div>
+<div class="song-desc-text">
+<div class="song-name"><a href="/v2/music/song/1108294810">请记住我(电影《寻梦环游记》主题曲)</a></div>
+<div class="song-artist">
+<a href="/v2/music/artist/1106695242">毛不易</a>
+</div>
+</div>
+</div>
+<div class="listen-time">
+<i class="iconfont cf-audition"></i>
+<span>3.2W</span>
+</div>
+<div class="icon-action">
+<a href="javascript:;" class="song-play no-play single-play" mid="1108294810" title="播放">
+<i class="iconfont cf-play"></i>
+<i class="iconfont cf-play-l"></i>
+</a>
+<a href="/v2/music/order/crbt/1108294810?copyrightId=6005660WR8Q" class="song-ring" title="彩铃">
+<i class="iconfont cf-ring-l"></i>
+</a>
+<a href="/v2/music/order/download/1108294810?copyrightId=6005660WR8Q" class="song-download" title="下载">
+<i class="iconfont cf-download"></i>
+</a>
+</div>
+</div>
+</li>
+</ul>
+<div class="billboard-action">
+<span class="billboard-play" mids = "1108354603&amp;1108344774&amp;1107988267&amp;1108341269&amp;1108294810&amp;1108296518&amp;1108377224&amp;1108234565&amp;1108360665&amp;1108156893&amp;1106941325&amp;1107740469&amp;1108296984&amp;1108356512&amp;1107744480&amp;1107529536&amp;1108297493&amp;1107934994&amp;1108156794&amp;1108345936&amp;1108133260&amp;1107868802&amp;1106920769&amp;1108238988&amp;1108174217&amp;1108363121&amp;1108294741&amp;1108363016&amp;1106928345&amp;1108045788">
+<i class="iconfont cf-play1"></i>
+</span>
+<span class="btn-add" data-type="2" data-id="1108354603&amp;1108344774&amp;1107988267&amp;1108341269&amp;1108294810&amp;1108296518&amp;1108377224&amp;1108234565&amp;1108360665&amp;1108156893&amp;1106941325&amp;1107740469&amp;1108296984&amp;1108356512&amp;1107744480&amp;1107529536&amp;1108297493&amp;1107934994&amp;1108156794&amp;1108345936&amp;1108133260&amp;1107868802&amp;1106920769&amp;1108238988&amp;1108174217&amp;1108363121&amp;1108294741&amp;1108363016&amp;1106928345&amp;1108045788">
+<i class="iconfont cf-tianjia" type="slide-action"></i>
+</span>
+</div>
+</div>
+<div class="billboard-cover"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="arrow-button arrow-left"></div>
+<div class="arrow-button arrow-right"></div>
+</div>
+</div>
+<!--咪咕榜单 end--><!--音乐人 start-->
+<div id="musicians" class="song-songlist">
+<div class="title-box">
+<h2 class="title"></h2>
+<div class="operation">
+<a href="http://i.migu.cn/v2/music/musician" class="more">更多<i class="iconfont cf-right-arrow-bold"></i></a>
+</div>
+</div>
+<div class="musicians">
+<div class="swiper-container musicians-swiper">
+<div class="swiper-wrapper">
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am4235561b45d744c0942f5be94748f3ff.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108389431"></a>
+</div>
+<span class="btn-play single-play" mid="1108389431" data-musicName="我知道要微笑" data-album="" data-singerName="周兴哲"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108389431">我知道要微笑</a></p>
+<p class="singer">
+<a href="/v2/music/artist/1002043053">周兴哲</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108389431"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am8423a4064d1c4f128f2a09cafbc479a2.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108397975"></a>
+</div>
+<span class="btn-play single-play" mid="1108397975" data-musicName="时代" data-album="" data-singerName="三维鱼乐队"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108397975">时代</a></p>
+<p class="singer">
+<a href="/v2/music/artist/65955">三维鱼乐队</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108397975"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am328af49bd3b0415c9dac91b8ea5f01f5.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108390475"></a>
+</div>
+<span class="btn-play single-play" mid="1108390475" data-musicName="扯谎哥" data-album="" data-singerName="阿朵"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108390475">扯谎哥</a></p>
+<p class="singer">
+<a href="/v2/music/artist/1282">阿朵</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108390475"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am754f05b08ba0425d92bb453608739bfc.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108384636"></a>
+</div>
+<span class="btn-play single-play" mid="1108384636" data-musicName="两分钟" data-album="" data-singerName="邱振哲"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108384636">两分钟</a></p>
+<p class="singer">
+<a href="/v2/music/artist/1001206743">邱振哲</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108384636"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am74b498aa34f345439254e3c7a4eae54d.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108377265"></a>
+</div>
+<span class="btn-play single-play" mid="1108377265" data-musicName="刀" data-album="" data-singerName="乌拉多恩"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108377265">刀</a></p>
+<p class="singer">
+<a href="/v2/music/artist/1001213225">乌拉多恩</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108377265"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am8a0ecdcdb6a442ddbb2e784418379aa0.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108379699"></a>
+</div>
+<span class="btn-play single-play" mid="1108379699" data-musicName="Boss" data-album="" data-singerName="孔令奇"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108379699">Boss</a></p>
+<p class="singer">
+<a href="/v2/music/artist/5371">孔令奇</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108379699"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/ame9d5d9b0c7d4458692408f465cf1e5ed.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108369430"></a>
+</div>
+<span class="btn-play single-play" mid="1108369430" data-musicName="勇往直前" data-album="" data-singerName="Faye飞"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108369430">勇往直前</a></p>
+<p class="singer">
+<a href="/v2/music/artist/1001561713">Faye飞</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108369430"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/amfbb92f8b520c4d9f800ad198dc2ffba6.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108371508"></a>
+</div>
+<span class="btn-play single-play" mid="1108371508" data-musicName="离游记" data-album="" data-singerName="王菀之"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108371508">离游记</a></p>
+<p class="singer">
+<a href="/v2/music/artist/1000095342">王菀之</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108371508"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am4d8133bddb4d40f788e7b1c1abbd2733.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108371497"></a>
+</div>
+<span class="btn-play single-play" mid="1108371497" data-musicName="时荒" data-album="" data-singerName="回音哥"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108371497">时荒</a></p>
+<p class="singer">
+<a href="/v2/music/artist/1000023444">回音哥</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108371497"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am07a8b2efa8f647ec94e16e8ac465ccc6.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108364593"></a>
+</div>
+<span class="btn-play single-play" mid="1108364593" data-musicName="你的世界渲染了我" data-album="" data-singerName="红,Olga Glazova"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108364593">你的世界渲染了我</a></p>
+<p class="singer">
+<a href="/v2/music/artist/1108364586">红</a>
+<a href="/v2/music/artist/1108364592">Olga Glazova</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108364593"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide odd">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/am4235561b45d744c0942f5be94748f3ff.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108363298"></a>
+</div>
+<span class="btn-play single-play" mid="1108363298" data-musicName="如果雨之后" data-album="" data-singerName="周兴哲"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108363298">如果雨之后</a></p>
+<p class="singer">
+<a href="/v2/music/artist/1002043053">周兴哲</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108363298"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="swiper-slide even">
+<div class="items">
+<div class="items-top">
+<img src="{$root}static/picture/amd616be3805e24c3e90d618557d42178b.jpg" alt="" class="img-block img-full">
+<div class="img-cover">
+<a href="/v2/music/song/1108363098"></a>
+</div>
+<span class="btn-play single-play" mid="1108363098" data-musicName="到此一游" data-album="" data-singerName="周渔"></span>
+</div>
+<div class="items-bottom">
+<div class="items-bottom-left">
+<p class="song-name"><a href="/v2/music/song/1108363098">到此一游</a></p>
+<p class="singer">
+<a href="/v2/music/artist/1630">周渔</a>
+</p>
+</div>
+<div class="items-bottom-right">
+<i class="iconfont cf-play single-play" mid="1108363098"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="arrow-button arrow-left"></div>
+<div class="arrow-button arrow-right"></div>
+</div>
+</div>
+<!--音乐人 end-->
+<script src="{$root}static/js/webtrends.load.mg.js"></script>
+<!--footer start-->
+<div id="footer">
+<div class="footer-swap">
+<div class="migu-family migu-info">
+<p>咪咕音乐家族</p>
+<ul>
+<li><a href="http://m.10086.cn/migu/home/" target="_blank">手机版</a></li>
+<li><a href="http://ivr.migu.cn/" target="_blank">IVR</a></li>
+<li><a href="http://211.137.107.18:8888/page/cm/login.jsp" target="_blank">企业彩铃</a></li>
+<li><a href="http://ising.migu.cn/" target="_blank">咪咕爱唱（TV版）</a></li>
+<li><a href="https://zgyd.diyring.cc/web/webhome/index" target="_blank">个性彩铃</a></li>
+</ul>
+</div>
+<div class="migu-contact migu-info">
+<p>联系我们</p>
+<ul>
+<li><a href="http://music.migu.cn/v2/common/cooperation">业务合作</a></li>
+<li><a href="http://open.migu.cn/" target="_blank">开放平台</a></li>
+<li><a href="https://kf.migu.cn/api/onlineWeb?seq=0918175156348&servicetype=1&channelId=1101&appid=1101000001&usertype=99&hash=4893e6d42d2550ce266d64e5e58b45dd" target="_blank">常见问题</a></li>
+<li><a href="http://music.migu.cn/v2/common/musicianCooperation" target="_blank">咪咕音乐人合作</a></li>
+<li><a href="http://music.migu.cn/v2/common/contactus">联系我们</a></li>
+</ul>
+</div>
+<div class="migu-app migu-info">
+<p>咪咕音乐客户端</p>
+<ul>
+<li class="qrcode-a">
+<p>Android下载</p>
+<img src="" alt="咪咕音乐客户端Android下载二维码" class="img-block img-full">
+</li>
+<li>
+<p>IOS下载</p>
+<img src="{$root}static/picture/migumusic_ewm.png" alt="咪咕音乐客户端IOS下载二维码" class="img-block img-full">
+</li>
+</ul>
+</div>
+</div>
+<div class="copyright">
+<div class="c-link">
+<ul>
+<li>
+<a href="http://www.migu.cn/" target="_blank">咪咕文化</a>
+<span class="split-line"></span>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/common/profile" target="_blank">咪咕音乐简介</a>
+<span class="split-line"></span>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/common/copyright" target="_blank">版权声明</a>
+<span class="split-line"></span>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/common/news" target="_blank">新闻动态</a>
+<span class="split-line"></span>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/common/link" target="_blank">友情链接</a>
+<span class="split-line"></span>
+</li>
+<li>
+<a href="http://music.migu.cn/v2/common/map" target="_blank">网站地图</a>
+</li>
+</ul>
+</div>
+<div class="c-auth">
+<ul>
+<li>蜀ICP备15012512号-1</li>
+<li>川网文[2012]0762-026</li>
+<li>网络视听许可证0112648号</li>
+<li>增值业务许可证A2.B1.B2-20100001</li>
+</ul>
+</div>
+<div class="c-info">Copyright &copy; 2005 - 2017 咪咕音乐有限公司</div>
+</div>
+</div><div id="offset-action">
+<a href="javascript:;" id="scroll-top" title="回到顶部">
+<i class="iconfont cf-up"></i>
+</a>
+<a title="客服" class="action-botton action-service" href="https://kf.migu.cn/api/onlineWeb?seq=0918175156348&servicetype=1&channelId=1101&appid=1101000001&usertype=99&hash=4893e6d42d2550ce266d64e5e58b45dd" target="_blank">
+<b></b>
+</a> 
+<a href="javascript:;" title="打开播放器" class="action-botton open-player">
+<b></b>
+</a>
+</div>
+
+
+<div class="music" id="music" style="margin-top:200px;position:fixed;top:-90px;left:30%;z-index:1111;height:536px;display:none;"><div class="aui_titleBar"><div class="aui_title"><span class="aui-cmcc"></span><q></q>
+<span class="aui-one"></span></div></div>
+
+<div class="" style="background: #f1f1f1;height: 80px;">
+
+<a href="javascript:;"><img src="{$root}static/images/bess.png" style="width: 80px;height: 60px;float:left;margin-top: 10px;margin-left: 20px;"/></a>
+<a href="javascript:;"><img src="{$root}static/images/x.png" style="width: 30px;height: 30px;float:right;" class="close"/></a>
+<div style="background:;height:80px;">
+<ul class="clearfix sss" style="margin-left:100px;line-height: 120px;color:#aaa;font-size:20px;padding-left: 30px;"><a href="javascript:;"><li style="float:left;" class="active">密码登录 </li></a> <li class="" style="margin-left: 20px;float: left;"><a href="javascript:;">短信登录</a></li></ul>
+</div>
+</div>
+
+
+<div class="form-login J_FormLogin log show">
+<p class="error" id="error" style="display:none;">!账号或密码错误</p>
+<form class="J_ValidPsdForm" method="post" action="{$root}index/user/dologin"   style="display:block; "  >
+<div class="form-item" style="margin-top:10px;">
+<input type="text" class="txt" id="J_AccountPsd" name="username" maxlength="11"   placeholder="手机/邮箱/用户名" value="{$username}"/>
+<em class="em-account"></em></div>
+<div class="form-item">
+<input type="password" class="txt J_NoPsdEye" name="password" id="J_PasswordPsd" maxlength="32" placeholder="密码" value="{$password}" />
+<em class="em-psd"></em></div>
+<div class="form-item form-item-mb15"  style="" >
+<input type="text" class="txt" id="J_ImgCodePsd" name="captcha" maxlength="4" placeholder="请输入图中的结果"  />
+<em class="em-img"></em>
+<p class="verif_error" id="verif_error" style="display:none;">图形验证码错误或已失效</p>
+<div class="imgcode J_ImgCodeView">
+<img id="verify" alt="图形验证码" title="图形验证码" src='{:captcha_src()}' onclick="this.src='{:captcha_src()}?'+Math.random();"  />
+<a href="javascript:;" id="btn1" class="wqeigfwg">换一张</a>
+</div></div>
+<div class="form-item form-item-mb15">
+<input type="button" value="登录" class="login-submit" id="button"/></div>
+
+<div class="noform-item" id="noform-item">
+
+<input type="checkbox" id="autologin" class="autologin" /></a><p class="remember">记住密码?</p>
+<a href="{$root}index/user/findpass" target="_blank">忘记密码</a>
+<a href="javascript:;" target="_parent" >|</a>
+<a href="{$root}index/user/register" target="_blank">注册新帐号</a>
+</div>
+</form>
+<div class="other">
+    第三方登录：<span id="hzy_fast_login"></span>
+</div>
+</div>
+
+
+
+<div class="form-login J_FormLogin log">
+<form class="J_ValidPsdForm" method="post" action="https://passport.migu.cn/authn" cmcc-rsaAjax="https://passport.migu.cn/password/publickey"  style="display:block; "  >
+
+<div class="form-item" style="margin-top:10px;">
+<input type="text" class="txt" id="tel2" name="loginID" maxlength="11"   placeholder="手机" />
+<em class="em-account"></em></div>
+<p class="tel_error" id="tel_error">!手机号码输入错误</p>
+<div class="form-item form-item-mb15"  style="" >
+<input type="text" class="txt" id="J_ImgCodePsd2" name="captcha" maxlength="4" placeholder="请输入图中的结果" cmcc-ajax="https://passport.migu.cn/captcha/graph/check" />
+<em class="em-img"></em>
+<div class="imgcode J_ImgCodeView">
+<img id="verify2" alt="图形验证码" title="图形验证码"  src='{:captcha_src()}' onclick="this.src='{:captcha_src()}?'+Math.random();"  />
+<a href="javascript:;" id="btn2">换一张</a>
+<p class="verify_erroy2" id="verify_erroy2">!验证码输入错误或失效</p>
+</div></div>
+<div class="form-item">
+<input type="password" class="txt J_NoPsdEye" id="J_PasswordPsd2" maxlength="16" placeholder="短信验证码" style="width:130px;" /><input type='button' class="login-submit" id="login-submit2" style="width: 80px;" value="获取"/>
+<em class="em-psd"></em></div>
+<p class="error_msg" id="error_msg">!短信验证码输入错误</p>
+<div class="form-item form-item-mb15">
+<input type="button" value="登录" class="login-submit" id="tel_login"/></div>
+
+<div class="noform-item">
+<p class="login_fiure" id="login_fiure">!该手机号码尚未注册</p>
+<a href="{$root}index/user/register" target="_blank">注册新帐号</a>
+</div>
+</form>
+</div>
+
+
+
+
+</div>
+
+</div>
+<!--footer end-->
+
+<script src="{$root}static/js/jquery.min.js"></script>
+<script src="{$root}static/js/manifest.js"></script>
+<script src="{$root}static/js/vendor.js"></script>
+<script src="{$root}static/js/musicplay.js"></script>
+<script src="{$root}static/js/comment.js"></script>
+<script src="{$root}static/js/ad.js"></script>
+<script src="{$root}static/js/common.js"></script>
+<script src="{$root}static/js/recommend.js"></script>
+<script type="text/javascript" src="{$root}static/js/base.min_1.js" id="seajsFile"></script>
+
+<script src="{$root}static/js/login.js"></script>
+
+</body>
+</html>

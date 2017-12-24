@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<!-- saved from url=(0037)http://www.jianshu.com/settings/basic -->
+<html><!--<![endif]-->
+<head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <title>{$title}</title>
+
+  <link rel="stylesheet" media="all" href="{$root}static/css/web-8e4fd86a49b411611e61.css">
+  
+  <link rel="stylesheet" media="all" href="{$root}static/css/entry-7b434205f766417bd833.css">
+
+<style type="text/css">
+@charset "UTF-8";
+/*
+ * 变量
+*/
+.pc-bind-phone-modal .modal-content, .pc-bind-phone-modal .modal-body {
+  overflow: visible;
+}
+.pc-bind-phone-modal .dropdown-menu {
+  max-height: 300px;
+  overflow: auto;
+}
+.pc-bind-phone-modal .dropdown-menu .tag {
+    background-color: #efefef;
+    color: #4A4A4A;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 25px;
+    font-size: 12px;
+}
+.reader-night-mode .pc-bind-phone-modal .dropdown-menu .tag {
+  background-color: #2F2F2F;
+  color: #999999;
+}
+.all .set{
+  display: none;
+}
+.all .first{
+  display:block;
+}
+
+.avatar img{}
+</style>
+
+<script type="text/javascript" src="{$root}static/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="{$root}static/js/data.js"></script>
+<script type="text/javascript">
+  $(function(){
+
+    //alert($('.all .set').length);
+
+    $('.nav1 li').mouseover(function(){
+      $('.active').addClass('active1');
+      $('.nav1 li').removeClass('active');
+      $('.active1').addClass('active');
+       $(this).addClass('active');
+    });
+    $('.nav1 li').mouseout(function(){
+       $('.nav1 li').removeClass('active');
+       $('.active1').addClass('active');
+    });
+    $('.nav1 li').click(function(){
+      $('.nav1 li').removeClass('active');
+      $('.nav1 li').removeClass('active1');
+      $(this).addClass('active');
+      $(this).addClass('active1');
+      $('.set').css({"display":"none"});
+      var x=$('.set').eq($(this).index());
+      x.css({"display":'block'});
+      //alert(x);
+    });
+
+   
+  });
+</script>
+</head>
+
+
+  <body lang="zh-CN" class="reader-black-font" style="overflow-y: scroll;">
+    
+<div class="container setting" id="container"><div class="row"><div class="aside"><ul class="nav1">
+<li class="router-link-exact-active active"><a href="javascript:;"><div class="setting-icon"><i class="iconfont ic-settings-basic"></i></div> <span>修改头像</span> <!----></a></li>
+<li class=""><a href="javascript:;"><div class="setting-icon"><i class="iconfont ic-settings-profile"></i></div> <span>基础资料</span> <!----></a></li>
+<li class=""><a href="javascript:;"><div class="setting-icon"><i class="iconfont ic-settings-money"></i></div> <span>安全设置</span> <!----></a></li>
+<li class=""><a href="javascript:;"><div class="setting-icon"><i class="iconfont ic-settings-verify"></i></div> <span>修改密码</span> <!----></a></li></ul></div>
+
+<a href="{$root}/index/index/index"><input type="button" id="" class="returnfirst" value="返回首页" style="position:absolute;right:30px;top:40px;border:none;background-color:#31c27c;color:#fff;border-radius:20px;font-size:15px;"/></a>
+<!-- 修改头像 -->
+<div class="all">
+<div class="col-xs-16 col-xs-offset-8 main set first"><table><thead><tr><th class="setting-head responsive-head"></th> <th></th></tr></thead> <tbody class="base"><tr><td class="top-line"><div class="avatar"><img src="{$userinfo['pic']}"></div></td> 
+
+<form action="{$root}index/data/upload" method="post" enctype="multipart/form-data">
+  <tr>
+  <td class="top-line"><input  type="file" name="photo" value="更改头像">
+             
+            </td></tr> 
+          
+          
+           </tbody></table> <input type="submit" class="btn btn-success setting-save" value="修改"> 
+           </form><!----> <!----></div>
+
+<!-- 基础资料 -->
+
+<div class="col-xs-16 col-xs-offset-8 main set"><table><thead><tr><th class="setting-head responsive-head"></th> <th></th></tr></thead> <tbody class="base"><tr><td class="top-line"><div class="avatar"><img src="{$userinfo['pic']}"></div></td> 
+
+
+  <tr>
+  <td class="top-line"></td></tr>
+         
+          <tr><td class="setting-title">
+            昵称
+          </td> <td><input type="text" value="{$userinfo['username']}" name="username" id="username"></td><td id="user-length" style="color:red; display:none;">用户名为2到12个字符</td></tr> 
+          <tr><td class="top-line setting-title setting-verticle">
+            性别
+          </td> <td class="top-line"><input id="sex1"<?php echo ($userinfo['sex'] == 1 ? 'checked' : ''); ?> type="radio" name="sex" value="1" /> <span>男</span> <input id="sex0"<?php echo ($userinfo['sex'] == 0 ? 'checked' : ''); ?> type="radio" name ="sex" value="0"> <span>女</span> <input id="sex2" <?php echo ($userinfo['sex'] == 2 ? 'checked' : ''); ?> type="radio" name="sex" value="2"> <span>保密</span></td></tr>
+          <tr><td class="setting-title pull-left">个人简介</td> <td><textarea placeholder="{$introduce}" id="introduce" name="introduce"></textarea></td></tr>
+
+
+
+          
+          
+           </tbody></table> <input type="button" class="btn btn-success setting-save" id="xiugai" value="保存"> 
+           <!----> <!----></div>
+
+<!-- 安全设置 -->
+
+
+<div class="col-xs-16 col-xs-offset-8 main set"><table><thead><tr><th class="setting-head responsive-head"></th> <th></th></tr></thead> <tbody class="base"><tr><td class="top-line"><div class="avatar"><img src="{$userinfo['pic']}"></div></td> 
+
+<form action="" method="">
+  <tr>
+  <td class="top-line"></td></tr>
+         <tr><td class="setting-title">安全邮箱</td> <td> <input type="email" value="{$email}" id="email"></td><td id="error_email" style="color:red;display:none;">！邮箱格式不正确</td></tr> <tr><td class="setting-title">手机</td> <td class="setted"><input type="text" value="{$userinfo['tel']}" id="telphone" /></td><td id="error_tel" style="color:red;display:none;">！手机号码格式不正确</td></tr>  
+          
+          
+           </tbody></table> <input type="button" class="btn btn-success setting-save" value="保存" id="submit2"> 
+           </form><!----> <!----></div>
+
+<!-- 修改密码 -->
+
+<div class="col-xs-16 col-xs-offset-8 main set"><table><thead><tr><th class="setting-head responsive-head"></th> <th></th></tr></thead> <tbody class="base"><tr><td class="top-line"><div class="avatar"><img src="{$userinfo['pic']}"></div></td> 
+
+<form action="" method="">
+  <tr>
+  <td class="top-line"></td></tr>
+          <tr><td class="setting-title">昵称</td> <td>{$userinfo['username']}</td></tr>
+          <tr><td class="setting-title">旧密码</td> <td><input type="password" placeholder="请输入你的密码" id="old-pass"></td><td style="color:red; display:none;" id="oldpass">密码输入错误</td></tr>
+          <tr><td class="setting-title">新密码</td> <td><input maxlength="16" type="password" placeholder="请输入你的新密码" id="J_NewPassword"></td><td style="color:red; display:none;" id="pass-length">新密码为6到16位字符</td></tr>
+          <tr><td class="setting-title">确认密码</td> <td><input maxlength="16" type="password" placeholder="请再次输入你的新密码" id="J_rePassword"></td><td style="color:red; display:none;" id="pass-two">两次密码输入不一致</td></tr>
+          <tr><td><img id="verify" alt="图形验证码" title="图形验证码" src='{:captcha_src()}' onclick="this.src='{:captcha_src()}?'+Math.random();" /></td><td> <a href="javascript:;" id="btn" style="color:green;">换一张</a></td></tr>
+          <tr><td class="setting-title">验证码</td> <td><input type="password" placeholder="请输入验证码" id="J_ImgCode"></td><td style="color:red;display:none;" id="error_verify" >验证码输入错误</td></tr>
+          <tr><td>
+            
+          </td></tr>
+           </tbody></table> <input type="button" class="btn btn-success setting-save" value="确认" id="submit3"> 
+           </form><!----> <!----></div>
+        </div>
+
+         </div></div>
+
+<!----></body></html>

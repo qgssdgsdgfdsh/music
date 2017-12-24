@@ -1,0 +1,191 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="zh_CN">
+<head>
+<meta property="wb:webmaster" content="b685881ad4f09932" />
+<meta property="qc:admins" content="3541556021330724651756367" />
+<meta charset="UTF-8" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="format-detection" content="telephone=no" />
+<title>{$title}</title>
+<link rel="icon" href="https://passport.migu.cn/favicon32.ico" mce_href="https://passport.migu.cn/favicon32.ico" type="image/x-icon"/>
+<link rel="shortcut icon" href="https://passport.migu.cn/favicon.ico" mce_href="https://passport.migu.cn/favicon.ico" type="image/x-icon"/>
+<link rel="stylesheet" type="text/css" href="{$root}static/css/all_1.css">
+<link rel="stylesheet" type="text/css" href="{$root}static/css/register.css"/>
+</head>
+<body class="">
+<input type="hidden" id="J_IsPc"/>
+<input type="hidden" class="j_imgtype" value="0">
+<script type="text/javascript">
+	(function () {
+		var sys = {},
+		ua = navigator.userAgent;
+		sys.iphone = ua.indexOf("iPhone") > -1;
+		sys.ipod = ua.indexOf("iPod") > -1;
+		sys.ipad = ua.indexOf("iPad") > -1;
+		sys.nokiaN = ua.indexOf("NokiaN") > -1;
+		/Win(?:dows )?([^do]{2})/.test(ua);
+		sys.winMobile = /^CE|Ph$/.test(RegExp["$1"]);
+		sys.ios = navigator.platform.indexOf("Mac") == 0 && ua.indexOf("Mobile") > -1;
+		sys.android = ua.indexOf("Android") > -1;
+		
+		var isNoPC = sys.iphone || sys.ipod || sys.ipad || sys.nokiaN || sys.winMobile || sys.ios || sys.android;
+		document.getElementById("J_IsPc").value = isNoPC ? "0" : "1";
+	})();
+
+</script>
+<script type="text/javascript" src="{$root}static/js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="{$root}static/js/sgdsahdsfahjsfdj.js"></script>
+<script type="text/javascript">
+	/*if (document.getElementById("J_IsPc").value==1) {
+
+		}else{
+			
+		}*/
+		document.write('<input type="hidden" id="J_AgreeHref" value="https://passport.migu.cn/portal/protocol"/>');
+	
+	
+</script>
+<div class="header">
+<div class="pager clearfix">
+<div class="logo">
+<a href=" https://passport.migu.cn/portal " class="logo-one"><img src="{$root}static/images/bess.png" /></a>
+</div>
+<div class="login" id="login-del" >
+<a href="{$root}" class="J_Login">首页</a>
+</div>
+</div>
+</div>
+                    <div class="nav">
+    <div class="pager clearfix">
+            <a href="https://passport.migu.cn/portal" class="selected" style="color:#31c27c; border-bottom:5px solid #31c27c;">帐号</a>
+            
+             
+    </div>
+</div>        		<input type="hidden" name="dispatcher" id="dispatcher-admin" value="regPhone"/>
+		<div class="bodier regphone">
+			<div class="pager">
+				<div class="content" id="nologin" style="display:block;">
+					<h1 class="titler clearfix"><q class="t-reg" style="background:url({$images}title-game.png) no-repeat -400px -527px;"></q>用户注册</h1>
+					<div class="note1">
+						<p>您正在使用手机号码注册Bess音乐帐号。</p>
+						<p>您可以使用该帐号登录Bess音乐</p>	
+					</div>
+					<form class="former J_ValidForm" method="post" action="{$root}index/user/doregister" cmcc-rsaAjax="https://passport.migu.cn/portal/password/publickey">
+						<!-- <input type="hidden" name="sourceid" value=""/>
+						<input type="hidden" name="relayState" value=""/>
+						<input type="hidden" name="appType" value=""/> -->
+						<div class="form-item form-pos">
+							<label for="J_Phone">昵称</label>
+							<input id="username" type="text" class="txt" name="username" placeholder="昵称为6到12个中文或英文字符" maxlength="11"  value=""   />
+							<p id="user-length">!用户名长度不合法</p>
+					
+							<p class="tel" >手机号码</p>
+							<input type="text" class="txt" id="J_Phone" name="tel" placeholder="请输入手机号码" maxlength="11"  value=""   />
+							<span style="" id="tel">!手机号码格式不正确</span>
+													</div>
+						<div class="form-item">
+							<label for="J_ImgCode">图形验证码</label>
+							<input type="text" class="txt" id="J_ImgCode" name="graphCaptcha" placeholder="请输入图中的验证码" cmcc-ajax="https://passport.migu.cn/portal/captcha/graph/check" maxlength="4"/>
+							<span style="" id="error_verify">!验证码输入错误或失效</span>
+							<div class="imgcode J_ImgCodeView">
+								<img id="verify" alt="图形验证码" title="图形验证码" src='{:captcha_src()}' onclick="this.src='{:captcha_src()}?'+Math.random();" />
+								<a href="javascript:;" id="btn">换一张</a>
+							</div>
+						</div>
+						<div class="form-item">
+							<label for="J_MsgCode">短信验证码</label>
+							<input type="text" class="txt txt2" id="J_MsgCode" name="captcha" placeholder="请输入短信验证码" maxlength="6"/>
+							<input type="button" class="btn" value="获取" id="J_GetMsgCode" style="background:#31c27c;"/>
+							<span style="" id="error_msg">!短信验证码错误或者失效</span>
+							<!-- <input type="hidden" class="J_MsgCodeID" name="sessionid"/> -->
+							<span class="Validform_checktip"><q></q></span>
+						</div>
+						<div class="form-item">
+							<label for="J_NewPassword">设置密码</label>
+							<input type="password" class="txt" id="J_NewPassword" name="password" placeholder="请输入密码" maxlength="16"/>
+							<span style="" id="pass-length">!密码长度应为6-16位</span>
+							<span class ="repass" for="J_NewPassword">确认密码</span>
+							<input type="password" class="txt" id="J_rePassword" name="repassword" placeholder="请再次输入密码" maxlength="16"/>
+							<span style="" id="pass-two">!两次密码输入不一致</span>
+						<!-- 	<input type="hidden" class="J_RsaPsd" name="enpassword"/> -->
+						</div>
+					
+						<div class="form-item">
+							<div class="strength J_Strength">
+								
+								<p><s></s>密码长度为6-16位字符</p>
+						
+							</div>
+						</div>
+						<div class="form-item form-nopad">
+							
+						
+							<span class="Validform_checktip"><q></q></span>
+						</div>
+						<div class="form-item">
+							<input id="submit" type="button" value="下一步" class="submit" style="background:#31c27c;"/>
+						</div>
+					</form>
+					<iframe id="J_AutoLoginIframe" style="display:none" src=""></iframe>
+				</div>
+				<div id="login-success" class="content J_PageOK" style="display:none;">
+					<h1 class="titler clearfix"><q class="t-reg" style="background:url({$images}title-game.png) no-repeat -400px -527px;"></q>用户注册</h1>
+					<div class="right-mark" style="background:url({$images}msg-nav-game.png) no-repeat 0 -176px;"></div>
+					<div class="note2">
+						<h2>恭喜您，注册成功！</h2>
+						<p>用户名: <span class="J_PageAccount" style="color:red;" id="sucess-tel"></span></p>
+					
+					
+					</div>
+					<div class="tc">
+						<a href="{$root}" class="submit" style="background:#31c27c;">确定</a>
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="footer">
+<div class="pager">
+<div class="con clearfix">
+<dl>
+<dt>关于咪咕</dt>
+<dd>
+<a href="http://www.migu.cn/1040_2132.html">公司简介</a>
+<a href="http://www.migu.cn/1040_2133.html">帮助中心</a>
+</dd>
+</dl>
+<dl>
+<dt>相关链接</dt>
+<dd>
+<a href="https://passport.migu.cn/portal/guide" target="_blank">用户指南</a>
+<a href="https://passport.migu.cn/portal/guide#J_guide-href" target="_blank">常见问题</a>
+</dd>
+</dl>
+<dl>
+<dt>友情链接</dt>
+<dd>
+<a href="http://www.10086.cn" target="_blank">移动门户</a>
+</dd>
+</dl>
+<dl>
+<dt>更多服务</dt>
+<dd>
+</dd>
+</dl>
+</div>
+<p class="copyright clearfix">
+    <span>蜀ICP备15012512号-1 © 2017 Bess音乐 </span>
+    </p>
+</div>
+</div>
+<script type="text/javascript" src="{$root}static/js/dd04be207d2948e2914231ec2852c4f7.js"></script>
+<script type="text/javascript" id="J_NavTip" src="{$root}static/js/d00ceb9a11b4448894cbfb6c36ce9a2f.js"></script>
+
+<script type="text/javascript" src="{$root}static/js/base.min_1.js" id="seajsFile"></script>
+<!-- <script type="text/javascript" src="{$root}static/js/jquery.metadata.js" id="seajsFile"></script>
+<script type="text/javascript" src="{$root}static/js/jquery.validate.min.js" id="seajsFile"></script> -->
+</body>
+</html>
